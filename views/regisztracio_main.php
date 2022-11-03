@@ -9,4 +9,3 @@
         <input class="form-control" type="email" name="email" id="email" placeholder="E-mail cím" title="Adjon meg valós e-mail címet." required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"><br>
         <input class="btn btn-success" type="submit" value="Regisztráció">
     </form>
-
