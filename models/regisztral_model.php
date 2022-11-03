@@ -2,16 +2,21 @@
 
 class Regisztral_Model
 {
-	public function set_user($vars){
+	public function set_user($vars) // POST methoddal küldött $vars tömbben szereplő adatokat.
+    {
         $retData['eredmeny'] = "";
-        try {
+        try 
+        {
+            // A beírt felhasználónév és e-mail cím összehasonlítása a táblával
 			$connection = Database::getConnection();
 			$sql = "select bejelentkezes, email from felhasznalok where bejelentkezes='".$vars['login']."'OR email='".$vars['email']."'";
 			$stmt = $connection->query($sql);
 			$felhasznalo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            if(count($felhasznalo)==0)
+            // Ha nincs azaz 0, akkor adja hozzá egyébként már van ilyen felhasználónév vagy e-mail cím.
+            if(count($felhasznalo)==0) 
             {
+                // Felhasználó regisztrálása
                 $newconnection = Database::getConnection();
                 $sqlInsert = "insert into felhasznalok (id, csaladi_nev, utonev, bejelentkezes, jelszo, email ,jogosultsag)
                 values(0, :csaladi_nev , :utonev, :bejelentkezes, :jelszo, :email, :jogosultsag)";
@@ -24,17 +29,18 @@ class Regisztral_Model
             }
             else
             {         
+                // Hiba - Már regisztráltak a megadott felhasználónévvel vagy e-mail címmel.
                 $retData['eredmeny'] = "ERROR";
                 $retData['uzenet'] = " Ilyen felhasználó névvel vagy e-mail címmel már regisztráltak. "; 
             }
 		}
-		catch (PDOException $e) {
+		catch (PDOException $e) 
+        {
+                    // Adatbázis hiba esetén kíírja az oldal a hibát.
 					$retData['eredmény'] = "ERROR";
 					$retData['uzenet'] = "Adatbázis hiba: ".$e->getMessage()."!";
 		}
 		return $retData;
 	}
-
-
 }
 ?>

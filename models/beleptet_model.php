@@ -5,7 +5,8 @@ class Beleptet_Model
 	public function get_data($vars)
 	{
 		$retData['eredmeny'] = "";
-		try {
+		try 
+		{
 			$connection = Database::getConnection();
 			$sql = "select id, csaladi_nev, utonev, jogosultsag from felhasznalok where bejelentkezes='".$vars['login']."' and jelszo='".sha1($vars['password'])."'";
 			$stmt = $connection->query($sql);
@@ -31,7 +32,8 @@ class Beleptet_Model
 					$retData['uzenet'] = "Több felhasználót találtunk a megadott felhasználói név -jelszó párral!";
 			}
 		}
-		catch (PDOException $e) {
+		catch (PDOException $e) 
+		{
 					$retData['eredmény'] = "ERROR";
 					$retData['uzenet'] = "Adatbázis hiba: ".$e->getMessage()."!";
 		}
