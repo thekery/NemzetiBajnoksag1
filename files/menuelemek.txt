@@ -1,0 +1,4 @@
+1   kezdolap    Kezdőlap    00
+2   hirek    Hírek    00
+3   labdarugok    Labdarúgók    00
+4   kapcsolat    Kapcsolat    00
