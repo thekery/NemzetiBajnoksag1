@@ -6,6 +6,7 @@ class View_Loader
     private $render = FALSE;
     private $selectedItems = FALSE;
     private $style = FALSE;
+       
 
     public function __construct($viewName)
     {
@@ -32,6 +33,7 @@ class View_Loader
         $this->data['render'] = $this->render;
         $this->data['selectedItems'] = $this->selectedItems;
         $this->data['style'] = $this->style;
+                
         $viewData = $this->data;
         include(SERVER_ROOT . 'views/page_main.php');
     }

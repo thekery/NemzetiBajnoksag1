@@ -107,3 +107,31 @@ INSERT INTO `felhasznalok` (`id`, `csaladi_nev`, `utonev`, `bejelentkezes`, `jel
 
 INSERT INTO `felhasznalok`(`id`, `csaladi_nev`, `utonev`, `bejelentkezes`, `jelszo`, `email`, `jogosultsag`) 
 VALUES ('0','mester','teszt','mester','sha1(mesterTeszt5)','tesztmester@mail.hu','_1_');
+
+--- Hírek tábla létrehozása ---
+
+CREATE TABLE IF NOT EXISTS `hirek` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `cim` varchar(100) NOT NULL DEFAULT '',
+  `tartalom` varchar(500) NOT NULL DEFAULT '',
+  `hiridopont`DATETIME NOT NULL,
+  `user_name` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
+--- Hírek feltöltése ---
+
+INSERT INTO `hirek`(`id`, `cim`, `tartalom`, `hiridopont`) 
+VALUES ('1','Teszt cím az oldalhoz','Azért jött létre ez a hír hogy kirpóbáljuk hogyan működik a hír betöltő felület. Sokáig azt gondoltam, hogy macerás lesz. Végül megoldottam','2022.11.19 18:00:00'),
+('2','2 Teszt','Nehezen jön össze ez a rész.','2022.11.20 18:00:00');
+
+--- Kommentek feltöltése ---
+
+CREATE TABLE IF NOT EXISTS `kommentek` (
+    `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+    `comment_tartalom` varchar(100) NOT NULL DEFAULT '',
+    `comment_idopont` DATETIME NOT NULL,
+    `hir_id` int(10) NOT NULL,
+    `user_name` VARCHAR(50) NOT NULL,
+    PRIMARY KEY (`id`)
+    ) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;

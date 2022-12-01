@@ -19,7 +19,8 @@ class Regisztral_Controller
         // $baseName-ben szerelő adat alapján tölti be a nézetet.
         $view = new View_Loader($this->baseName.'_main');
 
-        // A $baseName alapján meghatározott nézetnek továbbíja az adatokat.
+        // A $baseName alapján meghatározott nézetnek továbbíja az adatokat
+        // a $retData változóban ami a nézeten a $viewData.
         foreach($retData as $name => $value)
         {
 			$view->assign($name, $value);

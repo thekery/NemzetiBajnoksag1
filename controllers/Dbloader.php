@@ -1,4 +1,4 @@
-s<?php
+<?php
 if(isset($_POST['jatekosgomb'])){
     if(file_exists('./Files/labdarugo.txt'))
     {
